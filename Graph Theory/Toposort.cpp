@@ -3,7 +3,10 @@
 对一个图的所有节点排序，使得每一条有向边(u,v)对应的u都排在v的前面
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <vector>
+#include <queue>
 
 // 边
 template<class type>
@@ -21,7 +24,7 @@ struct Edge {
 };
 
 // 边的最大数量
-const int MAX_SIZE = 100000;
+const int MAX_SIZE = 50000;
 
 // 图
 template<class type>
@@ -90,7 +93,7 @@ bool Graph<type>::toposort() {
     if (int(num.size()) == size) {
         // 输出
         for (int i = 0; i < size; ++i)
-            std::cout << num[i] << " ";
+            std::cout << num[i] << ' ';
         return true;
     }
     return false;
@@ -98,20 +101,21 @@ bool Graph<type>::toposort() {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int m, n;
-    scanf("%d", &m);
+    std::cin >> m;
     Graph<int> g(m);
-    scanf("%d", &n);
+    std::cin >> n;
     for (int i = 1; i <= n; ++i) {
         int u, v, w;
-        scanf("%d %d %d", &u, &v, &w);
+        std::cin >> u >> v >> w;
         g.insert(u, v, w);
     }
 
     g.toposort();
-    puts("");
+    std::cout << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

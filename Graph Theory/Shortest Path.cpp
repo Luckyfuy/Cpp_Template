@@ -3,7 +3,12 @@
 求两节点间权值和最小的路径
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <vector>
+#include <queue>
+#include <utility>
+#include <cstring>
 
 // 图的最大空间
 const int MAX_SIZE = 500;
@@ -157,28 +162,29 @@ type Graph<type>::dijkstra(int u) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int m, n, s;
-    scanf("%d %d %d", &m, &n, &s);
+    std::cin >> m >> n >> s;
     Floyd<int> floyd(m);
     Graph<int> g(s);
     for (int i = 1; i <= n; ++i) {
         int u, v, w;
-        scanf("%d %d %d", &u, &v, &w);
+        std::cin >> u >> v >> w;
         floyd.insert(u, v, w);
         g.insert(u, v, w);
     }
 
     for (int i = 1; i <= m; ++i)
-        printf("%d ", floyd.floyd(s, i));
-    puts("");
+        std::cout << floyd.floyd(s, i) << ' ';
+    std::cout << '\n';
     for (int i = 1; i <= m; ++i)
-        printf("%d ", g.dijkstra(i));
-    puts("");
+        std::cout << g.dijkstra(i) << ' ';
+    std::cout << '\n';
     for (int i = 1; i <= m; ++i)
-        printf("%d ", g.spfa(i));
-    puts("");
+        std::cout << g.spfa(i) << ' ';
+    std::cout << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

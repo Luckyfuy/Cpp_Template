@@ -3,7 +3,8 @@
 一种每个结点最多有两个子树的树结构
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
 // 节点
 template<class type>
@@ -84,7 +85,7 @@ template<class type>
 void BinaryTree<type>::preOrder(Node<type>* r) {
     if (r == nullptr)
         return;
-    std::cout << r -> data << " ";
+    std::cout << r -> data << ' ';
     preOrder(r -> le);
     preOrder(r -> rt);
 }
@@ -95,7 +96,7 @@ void BinaryTree<type>::inOrder(Node<type>* r) {
     if (r == nullptr)
         return;
     inOrder(r -> le);
-    std::cout << r -> data << " ";
+    std::cout << r -> data << ' ';
     inOrder(r -> rt);
 }
 
@@ -106,25 +107,26 @@ void BinaryTree<type>::postOrder(Node<type>* r) {
         return;
     postOrder(r -> le);
     postOrder(r -> rt);
-    std::cout << r -> data << " ";
+    std::cout << r -> data << ' ';
 }
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     BinaryTree<int> tree;
     tree.build();
 
     Node<int>* root = tree.getRoot();
-    printf("%d\n", root -> data);
+    std::cout << root -> data << '\n';
 
     tree.preOrder(root);
-    puts("");
+    std::cout << '\n';
     tree.inOrder(root);
-    puts("");
+    std::cout << '\n';
     tree.postOrder(root);
-    puts("");
+    std::cout << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

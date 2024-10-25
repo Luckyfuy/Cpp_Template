@@ -3,7 +3,10 @@
 两个节点中离根最远的公共祖先
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <vector>
+#include <utility>
 
 // 树的最大空间
 const int MAX_SIZE = 10000, MAX_LOG = 20;
@@ -69,17 +72,18 @@ type Tree<type>::lca(type a, type b) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int root, n, m;
-    scanf("%d %d %d", &n, &m, &root);
+    std::cin >> n >> m >> root;
     Tree<int> g(root, n);
 
     for (int i = 1; i <= m; ++i) {
         int a, b;
-        scanf("%d %d", &a, &b);
-        printf("%d\n", g.lca(a, b));
+        std::cin >> a >> b;
+        std::cout << g.lca(a, b) << '\n';
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

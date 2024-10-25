@@ -3,7 +3,9 @@
 一种FIFO（Fast Input First Output，即先进先出）线性数据结构
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <format>
 
 // 队列的最大空间
 const int MAX_SIZE = 100000;
@@ -58,8 +60,8 @@ bool Queue<type>::pop() {
 template<class type>
 void Queue<type>::print() {
     for (int i = fnt + 1; i <= end; ++i)
-        std::cout << ele[i] << " ";
-    puts("");
+        std::cout << ele[i] << ' ';
+    std::cout << '\n';
 }
 
 // 是否为空队列
@@ -82,19 +84,20 @@ int Queue<type>::size() {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     Queue<int> cq;
     int n;
-    while (scanf("%d", &n))
+    while (std::cin >> n)
         cq.push(n);
 
     while (!cq.empty()) {
         cq.print();
-        printf("Front: %d\n", cq.front());
-        printf("Size: %d\n", cq.size());
+        std::cout << std::format("Front: {}\n", cq.front());
+        std::cout << std::format("Size: {}\n", cq.size());
         cq.pop();
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

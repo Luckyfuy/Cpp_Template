@@ -3,7 +3,8 @@
 用扩展欧几里得算法来求解线性同余方程和乘法逆元
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
 // 扩展欧几里得算法
 long long exgcd(long long a, long long b, long long &x, long long &y) {
@@ -38,16 +39,17 @@ long long inv(long long a, long long p) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     long long a, b, c, x, y;
-    scanf("%lld %lld %lld", &a, &b, &c);
+    std::cin >> a >> b >> c;
 
-    printf("%lld\n", exgcd(a, b, x, y));
-    printf("%lld %lld\n", x, y);
-    printf("%lld\n", eq(a, b, c, x, y));
-    printf("%lld %lld\n", x, y);
-    printf("%lld\n", inv(a, b));
+    std::cout << exgcd(a, b, x, y) << '\n';
+    std::cout << x << ' ' << y << '\n';
+    std::cout << eq(a, b, c, x, y) << '\n';
+    std::cout << x << ' ' << y << '\n';
+    std::cout << inv(a, b) << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

@@ -3,7 +3,11 @@ ST表
 用于解决静态区间最值查询问题
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <vector>
+#include <format>
+#include <algorithm>
 
 // ST表的最大空间
 const int MAX_SIZE = 10000, MAX_LOG = 20;
@@ -84,25 +88,26 @@ type MaxST<type>::query(int l, int r) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int n;
     std::vector<int> num;
-    scanf("%d", &n);
+    std::cin >> n;
     for (int i = 1; i <= n; ++i) {
         int t;
-        scanf("%d", &t);
+        std::cin >> t;
         num.push_back(t);
     }
     MinST<int> minst(num);
     MaxST<int> maxst(num);
 
-    scanf("%d", &n);
+    std::cin >> n;
     for (int i = 1; i <= n; ++i) {
         int l, r;
-        scanf("%d %d", &l, &r);
-        printf("%d %d\n", minst.query(l, r), maxst.query(l, r));
+        std::cin >> l >> r;
+        std::cout << std::format("{} {}\n", minst.query(l, r), maxst.query(l, r));
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

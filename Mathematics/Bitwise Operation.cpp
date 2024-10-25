@@ -3,7 +3,9 @@
 利用位运算来实现一些常用操作
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <format>
 
 // 乘以2^m
 int mulTwoPower(int n, int m=1) {
@@ -65,22 +67,23 @@ int add(int a, int b) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int a, b;
-    scanf("%d %d", &a, &b);
+    std::cin >> a >> b;
 
-    std::cout.setf(std::ios_base::boolalpha);
-    printf("%d\n", mulTwoPower(a, b));
-    printf("%d\n", divTwoPower(a, b));
-    std::cout << isOdd(a) << " " << isOdd(b) << std::endl;
-    printf("%d\n", max(a, b));
-    printf("%d\n", min(a, b));
-    printf("%d %d\n", iabs(a), iabs(b));
-    std::cout << isTwoPower(a) << " " << isTwoPower(b) << std::endl;
-    printf("%d\n", modTwoPower(a, b));
-    std::cout << isSameSign(a, b) << std::endl;
-    printf("%d\n", add(a, b));
+    std::cout.setf(std::ios::boolalpha);
+    std::cout << std::format("{}\n", mulTwoPower(a, b));
+    std::cout << std::format("{}\n", divTwoPower(a, b));
+    std::cout << std::format("{} {}\n", isOdd(a), isOdd(b));
+    std::cout << std::format("{}\n", max(a, b));
+    std::cout << std::format("{}\n", min(a, b));
+    std::cout << std::format("{} {}\n", iabs(a), iabs(b));
+    std::cout << std::format("{} {}\n", isTwoPower(a), isTwoPower(b));
+    std::cout << std::format("{}\n", modTwoPower(a, b));
+    std::cout << std::format("{}\n", isSameSign(a, b));
+    std::cout << std::format("{}\n", add(a, b));
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

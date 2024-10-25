@@ -3,7 +3,10 @@
 一个图的极小联通子图，包含原图的所有节点，且所有边的权值之和最小
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <vector>
+#include <algorithm>
 
 // 边
 template<class type>
@@ -171,20 +174,21 @@ type Prim<type>::prim() {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int m, n;
-    scanf("%d %d", &m, &n);
+    std::cin >> m >> n;
     Kruskal<int> g1(m, n);
     Prim<int> g2(m, n);
     for (int i = 1; i <= n; ++i) {
         int u, v, w;
-        scanf("%d %d %d", &u, &v, &w);
+        std::cin >> u >> v >> w;
         g1.insert(u, v, w);
         g2.insert(u, v, w);
     }
 
-    printf("%d\n%d\n", g1.kruskal(), g2.prim());
+    std::cout << g1.kruskal() << '\n' << g2.prim() << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

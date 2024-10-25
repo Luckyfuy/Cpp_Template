@@ -3,7 +3,9 @@
 一种LIFO（Last Input First Output，即后进先出）线性数据结构
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <format>
 
 // 栈的最大空间
 const int MAX_SIZE = 100000;
@@ -58,8 +60,8 @@ bool Stack<type>::pop() {
 template<class type>
 void Stack<type>::print() {
     for (int i = 1; i <= tot; ++i)
-        std::cout << ele[i] << " ";
-    puts("");
+        std::cout << ele[i] << ' ';
+    std::cout << '\n';
 }
 
 // 是否为空栈
@@ -82,19 +84,20 @@ int Stack<type>::size() {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     Stack<int> st;
     int n;
-    while (scanf("%d", &n))
+    while (std::cin >> n)
         st.push(n);
 
     while (!st.empty()) {
         st.print();
-        printf("Top: %d\n", st.top());
-        printf("Size: %d\n", st.size());
+        std::cout << std::format("Top: {}\n", st.top());
+        std::cout << std::format("Size: {}\n", st.size());
         st.pop();
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

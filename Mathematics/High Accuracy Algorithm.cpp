@@ -3,7 +3,11 @@
 可计算大整数的加减乘除及求余
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <string>
+#include <format>
+#include <utility>
 
 // 最大位数
 const int MAX_DIGIT = 1000;
@@ -159,15 +163,16 @@ std::string mod(std::string a, std::string b) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     std::string a, b;
     std::cin >> a >> b;
 
-    printf("%s + %s = %s\n", a.c_str(), b.c_str(), add(a, b).c_str());
-    printf("%s - %s = %s\n", a.c_str(), b.c_str(), sub(a, b).c_str());
-    printf("%s * %s = %s\n", a.c_str(), b.c_str(), multi(a, b).c_str());
-    printf("%s / %s = %s ...... %s\n", a.c_str(), b.c_str(), divide(a, b).c_str(), mod(a, b).c_str());
+    std::cout << std::format("{} + {} = {}\n", a, b, add(a, b));
+    std::cout << std::format("{} - {} = {}\n", a, b, sub(a, b));
+    std::cout << std::format("{} * {} = {}\n", a, b, multi(a, b));
+    std::cout << std::format("{} / {} = {} ...... {}\n", a, b, divide(a, b), mod(a, b));
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

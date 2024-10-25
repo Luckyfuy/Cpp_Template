@@ -3,7 +3,10 @@
 用getchar()和putchar()对读入、输出进行优化
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <cstdio>
+#include <cctype>
 
 inline bool blank(char ch) {
     return ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t';
@@ -70,7 +73,6 @@ int main() {
         write<long long>(n, '\n');
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

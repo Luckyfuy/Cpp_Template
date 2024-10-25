@@ -3,7 +3,10 @@
 利用堆的性质来排序
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <vector>
+#include <utility>
 
 // 堆的最大空间
 const int MAX_SIZE = 100000;
@@ -124,18 +127,19 @@ void HeapSort(std::vector<type> &num) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     int n;
     std::vector<int> num;
-    while (scanf("%d", &n))
+    while (std::cin >> n)
         num.push_back(n);
 
     HeapSort(num);
 
-    for (int i = 0; i < int(num.size()); ++i)
-        printf("%d ", num[i]);
-    puts("");
+    for (int i: num)
+        std::cout << i << ' ';
+    std::cout << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

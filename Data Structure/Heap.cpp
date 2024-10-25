@@ -3,7 +3,10 @@
 一种父节点总是大于或小于子节点的树型数据结构
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <format>
+#include <utility>
 
 // 堆的最大空间
 const int MAX_SIZE = 100000;
@@ -112,24 +115,25 @@ int Heap<type>::size() {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     Heap<int> hp;
     int n;
-    while (scanf("%d", &n)) {
+    while (std::cin >> n) {
         hp.push(n);
-        printf("Top: %d\n", hp.top());
-        printf("Size: %d\n", hp.size());
+        std::cout << std::format("Top: {}\n", hp.top());
+        std::cout << std::format("Size: {}\n", hp.size());
     }
-    puts("");
+    std::cout << '\n';
 
     while (!hp.empty()) {
         n = hp.top();
         hp.pop();
-        printf("Pop: %d\n", n);
-        printf("Top: %d\n", hp.top());
-        printf("Size: %d\n", hp.size());
+        std::cout << std::format("Pop: {}\n", n);
+        std::cout << std::format("Top: {}\n", hp.top());
+        std::cout << std::format("Size: {}\n", hp.size());
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

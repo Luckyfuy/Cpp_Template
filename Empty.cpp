@@ -1,8 +1,11 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
 int main() {
+    std::ios::sync_with_stdio(false);
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

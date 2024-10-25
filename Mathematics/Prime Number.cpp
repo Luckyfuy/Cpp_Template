@@ -3,7 +3,9 @@
 质数的判定及筛法
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
+#include <cstdlib>
 
 // 快速幂
 long long pow(long long x, long long y, long long z) {
@@ -61,21 +63,22 @@ int euler(long long n) {
         }
     }
     for (int i = 1; i <= tot; ++i)
-        printf("%d ", prime[i]);
-    puts("");
+        std::cout << prime[i] << ' ';
+    std::cout << '\n';
     return tot;
 }
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     long long n;
-    scanf("%lld", &n);
+    std::cin >> n;
 
-    std::cout.setf(std::ios_base::boolalpha);
-    std::cout << millerRabin(n) << std::endl;
-    printf("%d\n", euler(n));
+    std::cout.setf(std::ios::boolalpha);
+    std::cout << millerRabin(n) << '\n';
+    std::cout << euler(n) << '\n';
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

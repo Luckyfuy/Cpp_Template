@@ -3,7 +3,8 @@
 一种存储不连续的线性数据结构
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
 // 节点
 template<class type>
@@ -144,9 +145,9 @@ void LinkedList<type>::print() {
     Node<type> *ptr = head;
     while (ptr -> nxt != nullptr) {
         ptr = ptr -> nxt;
-        printf("%d ", ptr -> data);
+        std::cout << ptr -> data << ' ';
     }
-    puts("");
+    std::cout << '\n';
 }
 
 // 返回链表是否为空
@@ -157,18 +158,20 @@ bool LinkedList<type>::empty() {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     LinkedList<int> lst;
     int m, n;
 
-    scanf("%d", &m);
+    std::cin >> m;
     for (int i = 1; i <= m; ++i) {
-        scanf("%d", &n);
+        std::cin >> n;
         lst.ins(n);
         lst.print();
-        printf("%d\n", lst.size());
+        std::cout << lst.size() << '\n';
     }
 
-    // while (scanf("%d %d", &m, &n)) {
+    // while (std::cin >> m >> n) {
     //     lst.ins(n, m);
     //     lst.print();
     // }
@@ -176,16 +179,15 @@ int main() {
     // while (lst.size() > 0) {
     //     lst.del();
     //     lst.print();
-    //     printf("%d\n", lst.size());
+    //     std::cout << lst.size() << '\n';
     // }
 
-    // while (scanf("%d", &n)) {
+    // while (std::cin >> n) {
     //     lst.del(n);
     //     lst.print();
-    //     printf("%d\n", lst.size());
+    //     std::cout << lst.size() << '\n';
     // }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }

@@ -3,7 +3,8 @@
 一种处理不相交集合的合并与查询问题的树型数据结构
 */
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
 // 并查集的最大空间
 const int MAX_SIZE = 100000;
@@ -54,24 +55,25 @@ bool UnionFind<type>::ask(type a, type b) {
 
 // 测试
 int main() {
+    std::ios::sync_with_stdio(false);
+
     UnionFind<int> uf;
     int m, n;
-    scanf("%d %d", &m, &n);
+    std::cin >> m >> n;
 
     for (int i = 1; i <= m; ++i) {
         int a, b;
-        scanf("%d %d", &a, &b);
+        std::cin >> a >> b;
         uf.uni(a, b);
     }
 
-    std::cout.setf(std::ios_base::boolalpha);
+    std::cout.setf(std::ios::boolalpha);
     for (int i = 1; i <= n; ++i) {
         int a, b;
-        scanf("%d %d", &a, &b);
-        std::cout << uf.ask(a, b) << std::endl;
+        std::cin >> a >> b;
+        std::cout << uf.ask(a, b) << '\n';
     }
 
-    setbuf(stdin, nullptr);
-    getchar();
-    return 0;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }
